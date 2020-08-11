@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추가적인 연산자</title>
+    <style>
+        .area{
+            height:100px;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>== 연산자와 ===</h3>
+
+    <button onclick="opTest1();">확인</button>
+
+    <h4>* 동등연산자 (==, !=)</h4>
+    <p>자료형에 상관없이 값만 일치하면 true, 아니면 false 반환</p>
+    <div id="area1" class="area"></div>
+
+    <h4>* 일치연산자(===, !==)</h4>
+    <p>자료형과 값이 모두 일치해야만 true, 아니면 false 반환</p>
+    <div id="area2" class="area"></div>
+
+    <script>
+        function opTest1(){
+
+            var area1 = document.getElementById("area1");
+            var area2 = document.getElementById("area2");
+
+            var check1 = 1;   // number타입
+            var check2 = "1"; // string타입
+
+            // 동등연산자
+            area1.innerHTML += 'check1 == 1 : ' + (check1 == 1) + "<br>";
+            area1.innerHTML += 'check1 == "1" : ' + (check1 == "1") + "<br>";
+            area1.innerHTML += 'check2 == 1 : ' + (check2 == 1) + "<br>";
+            area1.innerHTML += 'check2 == "1" : ' + (check2 == "1") + "<br>";
+
+            // 일치연산자
+            area2.innerHTML += 'check1 === 1 : ' + (check1 === 1) + "<br>";
+            area2.innerHTML += 'check1 === "1" : ' + (check1 === "1") + "<br>";
+            area2.innerHTML += 'check2 === 1 : ' + (check2 === 1) + "<br>";
+            area2.innerHTML += 'check2 === "1" : ' + (check2 === "1");
+
+
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 연산자를 이용한 짧은 조건문</h3>
+
+    <button onclick="checkLogic();">확인</button>
+
+    <script>
+        function checkLogic(){
+            var num = prompt("숫자를 입력하세요");
+
+            //console.log(num);
+            //console.log(typeof(num));
+            //console.log(10);
+
+            /*
+            if(num % 2 == 0){
+                alert("짝수입니다.");
+            }else{
+                alert("홀수입니다.");
+            }*/
+
+            // 짧은 조건문
+            // 조건식 && 조건식이 참일 경우 실행할 구문;
+            // 조건식 || 조건식이 거짓일 경우 실행할 구문;
+
+            num % 2 == 0 && alert("짝수입니다.");
+            num % 2 == 0 || alert("홀수입니다.");
+        }
+    </script>
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>

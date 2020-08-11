@@ -38,3 +38,37 @@ var test = "테스트"; // 전역변수 특정함수 안에있어도 불러와�
 function showStr4(){
     console.log(str4);
 }
+function typeTest(){
+    var name = '홍길동';
+    var age = 20;
+    var check = true;
+    var hobby = ['영화','음악','낮잠']; //객체
+    var user = {
+                name:"홍길동",
+                age:20,
+                id:"user01"
+                 }; // 객체
+
+    var testFn = function(){
+        alert("zzz");
+    };
+
+    var noval;
+
+    var divEl = document.getElementById("area1");
+
+    // 자료형 확인 시 사용되는 함수 : typeOf 변수명
+    divEl.innerHTML = name + "의 자료형 : " + typeof(name) +"<br>" ;
+    divEl.innerHTML += age + "의 자료형 : " + typeof(age) + "<br>";
+    divEl.innerHTML += check + "의 자료형 : " + typeof(check) + "<br>";
+    divEl.innerHtml += hobby + "의 자료형 : " + typeof(hobby) + "<br>";
+
+    divEl.innerHTML += divEl + "의 자료형 : " +
+   // for(var i=0;i<length; i++){
+      for(var i in hobby){
+        console.log(hobby[i]);
+    }
+    //객체내부의 속성에 접근
+    console.log("user객체 : " + user.name + ", " + user.age + ", " + user.id);
+
+}

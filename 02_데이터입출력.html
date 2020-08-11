@@ -34,9 +34,8 @@
     <script>
         window.onload = function(){
             // 브라우저를 통해서 해당 문서가 로딩되고 난 직후에 실행 될 코드를 제시해두는 영역
-           // alert("알람창 출력!");
+         alert("알람창 출력!");
         }
-        
     </script>
     <br>
 
@@ -46,9 +45,10 @@
     <script>
         function documentWrite(){
             // 화면에 출력할 문자열에 html태그가 있을 경우 html태그로 진짜 인식함
-           // document.write("<b>기존 HTML 내용 모두 삭제되고 이문자열이 화면에 출력</b>");
+        //    document.write("<b>기존 HTML 내용 모두 삭제되고 이문자열이 화면에 출력</b>");
 
-            document.write("<table border='1'><tr><td>1</td></tr></table>")
+           document.write("<table border='1'><tr><td>1</td></tr></table>")
+
         }
     </script>
     <br>
@@ -82,7 +82,7 @@
             console.log(divEl.innerText); // 내용물에 html 태그 x 텍스트 문구만 가져옴
 
             // 요소 안의 내용을 변경하는 것도 가능
-            divEl.innerHTML = "<b>innerHTML로 속성값 변경함 ㅎㅎㅎ</b>";
+            // divEl.innerHTML = "<b>innerHTML로 속성값 변경함 ㅎㅎㅎ</b>";
             divEl.innerText = "<b>innerText로 속성값 변경함 ㅎㅎㅎ</b>";
 
             // innerHTML로 변경하면 문구에HTML태그가 있을 경우 태그로서 인식 시켜 적용
@@ -92,6 +92,7 @@
     </script>
     <br>
     <hr>  
+           
     
 
     <h2>2. 데이터 입력받는 기본 구문 (변수에 기록 가능)</h2>

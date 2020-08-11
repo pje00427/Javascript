@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열과 숫자</title>
+    <style>
+        .area{
+            height:420px;
+            border:1px solid red;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>문자열과 숫자</h1>
+
+    <button onclick="showStringMethod();">문자열처리메소드</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        function showStringMethod(){
+            var str1 = "hello world";
+
+            var area1 = document.getElementById("area1");
+
+            area1.innerHTML = "str1 : " + str1 + "<br>";
+            area1.innerHTML += "toUpperCase() : " + str1.toUpperCase() + "<br>";
+            area1.innerHTML += "toLowerCase() : " + str1.toLowerCase() + "<br>";
+            area1.innerHTML += "length : " + str1.length + "<br>";
+
+            area1.innerHTML += "앞에서 부터 첫1의 위치 : " + str1.indeOf("1") + "<br>";
+            area1.innerHTML += "뒤에서 부터 첫1의 위치 : " + str1.lastIndexOf("1") + "<br>";
+            area1.innerHTML += "앞에서 부터 첫 a의 위치 : " + str1.indexOf("a") + "<br>";
+            //없는 문자일 경우 -1반환
+
+            for(var i=0; i<str1.length; i++){
+                area1.innerHTML += i + "번째 인덱스 : " + str1.charAt(i) + "<br>";
+            }
+
+            area1.innerHTML += "substring() : " + str1.substring(0, 2) + "<br>"; // 0<= <2
+
+            var str2 = "사과,바나나,복숭아,키위,파인애플";
+
+            var fruits = str2.split(","); // ,를 구분자로 해서 쪼개진 각각의 문자열들을 배열에 담아 반환
+
+            console.log(fruits);
+
+            area1.innerHTML += "str2.split()한 결과 : " + fruits + "<br>";
+            area1.innerHTML += "fruits의 자료형 : " + typeof(fruits) + "<br>"
+    
+
+        }
+    </script>
+    <hr>
+
+    <h3>* 숫자관련 메소드</h3>
+    <button onclick>숫자처리메소드</button>
+    <div id="area2" class="area"></div>
+    <script>
+        function showMathMethod(){
+            var area2 = document.getElementById("area2");
+
+            area2.innerHTML += "절대값 : " + Math.abs(-123) + "<br>";
+            area2.innerHTML += "랜덤값 : " + Math.random() + "<br>";
+            area2.innerHTML += "반올림 : " + Meth.round(133.456, 2) + "<br>";
+        }
+    </script>
+
+</body>
+</html>

@@ -16,7 +16,7 @@
     <h1>HTML 요소에 접근하기 (해당 요소 가져오기)</h1>
 
     <h3>1) 아이디로 접근하기</h3>
-    <div id="area3" class="area"></div>
+    <div id="area1" class="area"></div>
     <button onclick="accessId();">아이디로 접근</button>
 
     <div id="area2" class="area"></div>
@@ -27,12 +27,12 @@
         function accessId(){
             // 아이디로 접근 : document.getElementById("아이디명");
 
-            var area1 = document.getElementById("area3");
+            var area1 = document.getElementById("area1");
 
             console.log(area1.id);
             console.log(area1.className);
 
-            area3.innerHTML += "아이디로 접근 성공!! <br>";
+            area1.innerHTML += "아이디로 접근 성공!! <br>";
             // area1.innerHTML = area1.innerHTML + "아이디로 접근성공!!<br>";
            
             // 선택된 요소에 스타일 변경 가능

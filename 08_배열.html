@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+    <style>
+        .small{
+            height: 100px;
+            border:1px solid red;
+
+        }
+        .big{
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>배열</h1>
+    <p>
+        자바스크립트에서는 변수 선언시 별도의 자료형 지정이 없기 때문에 <br>
+        모든 자료형의 값들을 하나의 배열에 다 담을 수 있다 (자바의 컬렉션과 비슷)
+    </p>
+
+    <button onclick="arrayTest1();">확인하기</button>
+    <div class="small" id="area1"></div>
+    <script>
+        function arrayTest1(){
+            var arr = ["홍길동",20,true,[1,2,3]];
+            console.log(arr);
+            // for(var i=0; i<arr.length; i++){
+            //     console.log(arr[i])
+            // }
+            // 배열 같은 경우 무조건 0번 인덱스부터 마지막인덱스 ㄲ지 모든 요소에 다 접근할 목적이라면 forin문 사용 가능
+            for(var i in arr){
+                console.log(arr[i]);
+            }
+            console.log(arr[3][0]);
+
+            document.getElementById("area1").innerHTML = arr; // div 통째로 돌아옴. innerHTML영역에 접근할래
+
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 배열의 선언</h3>
+    <p>배열 선언시 배열의 크기를 지정한채로 선언하거나, 크기 지정안한채로 선언도 가능(크기 제약없음)</p>
+
+    <button onclick="arrayTest2();">확인하기</button>
+    <script>
+        function arrayTest2(){
+            var arr1 = new Array(); // 크기를 지정하지 않은 빈 배열 선언
+            var arr2 = new Array(3); // 크기를 지정한 빈 배열 선언
+            var arr3 = [];
+
+            // console.log(arr1);
+            // console.log(arr2);
+            // console.log(arr3);
+            
+            // 배열에 값 대입
+            arr1[0] = "바나나";
+            arr1[1] = "복숭아";
+            arr1[2] = "키위";
+
+            arr2[0] = '자동차';
+            arr2[1] = '비행기';
+            arr2[2] = '도보';
+            arr2[3] = '기차';
+            console.log(arr1);
+            console.log(arr2);
+
+            // 배열 선언과 동시에 초기화
+            var arr4 = new Array("홍길동","임꺽정","신사임당");
+            console.log(arr4);
+
+            var arr5 = ['java','oracle','front','sercer','framework']
+            console.log(arr5);
+        }
+    </script>
+    <hr>
+    <!-- 필기확인 -->
+    <h3>* Array 객체의 메소드</h3>
+    <h4>1) indexOf(찾고자하는 요소) : 배열에서 요소가 위치한 인덱스를 리턴</h4>
+    <div id="area" class="small"></div>
+    <button onclick="indexOfTest();">확인하기</button>
+
+    <script>
+        function indexOfTest(){
+            var area2 = document.getElementById("area2"); // div요소
+
+            var arr = ["사과","딸기","바나나","복숭아","키위","파인애플","토마토"];
+
+            var fruit = prompt("찾고자 하는 과일명 입력하세요");
+
+            var index = arr.indexOf(fruit); // 위치를 찾은 인덱스
+
+            // console.log(index);
+            // 당신이 찾는 과일 xxx은 x번째 인덱스에 있습니다.
+            // 당신이 찾는 과일 xxx은 없습니다.
+
+            area2.innerHTML += "당신이 찾는 과일" + fruit + "은 ";
+
+            if(index < 0){
+                area2.innerHTML += "없습니다.<br>";
+            }else{
+                area2.innerHTML += index + "번째 인덱스에 있습니다. <br>";
+            }
+
+        }
+    </script>
+    <br>
+
+    <h4>2) concat(배열,배열, ..) : 여러개의 배열을 결합할 때 사용</h4>
+    <div id="area3" class="big"></div>
+    <button onclick="concatTest();">확인하기</button>
+    <script>
+        function concatTest(){
+
+            var area3 = document.getElementById("area3");
+
+            var arr1 = ["사과","딸기"];
+            var arr2 = ["키위","파인애플","토마토"];
+
+            area3.innerHTML += "arr1 : " + arr1 + "<br>";
+            area3.innerHTML += "arr2 : " + arr2 + "<br>";
+
+
+            area3.innerHTML += "arr1 기준으로 배열 합침 : " + arr1.concat(arr2) + "<br>";
+            area3.innerHTML += "다시 arr1 : " + arr1 + "<br>";
+            
+            area3.innerHTML += "arr2 기준으로 배열 합침 : " + arr2.concat(arr1) + "<br>";
+            area3.innerHTML += "다시 arr2 : " + arr2 + "<br>";
+
+            // 원본 배열에 영향을 끼치지 않는 메소드
+        }
+    </script>
+    <br>
+    <!-- 필기못함 -->
+    <h4>3) join() : 배열에 담긴 값들을 하나의문자열로 결합해서 반환</h4>
+    
+    <br>
+    
+
+</body>
+</html>

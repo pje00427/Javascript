@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         td{
+            width:50px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>행열 개수를 입력받아 테이블 만들기</h1>
+
+    <button onclick="testPrompt();">테이블생성</button>
+    <div id="area3" class="area"></div>
+
+    <script>
+        function testPrompt(){
+            var hang = prompt("테이블 행의 개수는?");
+
+            var yul = prompt("테이블 열의 개수는?");
+            
+            console.log(hang,yul);
+            var count = 1;
+            var table = '<table border="1">';
+
+           for(var i=0; i<hang; i++){
+               table += '<tr>';
+               for(var j=0; j<yul; j++){
+                    table += '<td>' + count++ + '</td>';
+               }
+                table += '</tr>';
+           }
+           table += '</table>';
+        
+        console.log(table);
+            
+        var area1 = document.getElementById("area3");
+        area1.innerHTML = table; 
+
+       }    // document.write(table);
+    </script>
+
+
+
+
+</body>
+</html>

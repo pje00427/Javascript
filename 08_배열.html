@@ -141,7 +141,138 @@
     <h4>3) join() : 배열에 담긴 값들을 하나의문자열로 결합해서 반환</h4>
     
     <br>
-    
 
+    <h4>4) reverse() : 배열에 담긴 값들을 역순으로 바꿔주는 메소드</h4>
+
+    <div id="area5" class="small"></div>
+    <button onclick="reverseTest();">확인하기</button>
+
+    <script>
+        function reverseTest(){
+            var area5 = document.getElementById("area5");
+            var arr = [1,2,3,4,5,6,7,8,9];
+
+            area5.innerHTML += "arr : " + arr + "<br>";
+
+            // 원본 배열에 영향을 끼치는 메소드 
+
+        }
+    </script>
+    <br>
+
+    <h4>5) sort() : 배열을 오름차순 정렬시켜주는 메소드</h4>
+    <div id="area6" class="big"></div>
+    <button onclick="sortTest();">확인하기</button>
+
+    <script>
+        function sortTest(){
+            var area6 = document.getElementById("area6");
+
+            var arr = ["박박박","김김","나나나","다다다"];
+
+            area6.innerHTML += "arr : " + arr + "<br>";
+
+            area6.innerHTML += "sort결과 : " + arr.sort() + "<br>";
+            // 원본 배열에 영향을 끼치는 메소드 
+            // 내림차순 정렬하고 싶으면? => 오름차순 정렬 수 역순으로 뒤집기
+            area6.innerHTML += "내림차순 결과 : " + arr.sort().reverse() + "<br>";
+
+        }
+    </script>
+    <br>
+
+    <h4>
+        6_1) push(추가할 요소) : 배열의 맨뒤에 요소 추가 <br>
+        6_2) pop() : 배열의 맨 뒤 요소 제거하고 제거된 요소 반환 
+    </h4>
+
+    <div id="area7" class="big"></div>
+    <button onclick="pushPopTest();">확인하기</button>
+
+    <script>
+        function pushPopTest(){
+            var area7 = document.getElementById("area7");
+
+
+        }
+    </script>
+
+    <br>
+    <h4>
+        7_1) unshift(추가할요소) : 배열의 맨 앞 요소 추가 <br>
+        7_2) shift() : 맨 앞 요소 삭제
+    </h4>
+
+    <div id="area8" class="big"></div>
+    <button onclick="shifttest();"> 확인하기</button>
+    
+    <script>
+        function shifttest(){
+            var area8 = document.getElementById("area8");
+            var arr = ["야구","축구","볼링","탁구","테니스"];
+
+            area8.innerHTML += "arr : " + arr + "<br>";
+
+            arr.unshift("농구");
+
+            area8.innerHTML += "arr에 unshift 후  : " + arr + "<br>";
+            area8.innerHTML += "arr에 unshift 후 배열의 길이 : " + arr.unshift("당구") + "<br>";
+            area8.innerHTML += "다시 arr  : " + arr + "<br>";
+
+            area8.innerHTML += "arr에 shift : " + arr.shift() +"<br>";
+            area8.innerHTML += "다시 arr  : " + arr + "<br>";
+
+            arr.shift();
+            area8.innerHTML += "최종 arr  : " + arr + "<br>";
+
+        }
+    </script>
+
+    <br>
+
+    <h4>
+        8_1) slice(시작,끝) : 배열의 요소를 추출하기 <br>
+        8_2) splice(시작, 제거수[,추가값]) : 배열의 요소를 추출해서 제거 및 추가
+    </h4>
+
+    <div id="area9" class="big"></div>
+    <button ocnlick="sliceSpliceTest();">확인</button>
+
+    <script>
+        function sliceSpliceTest(){
+            var area9 = document.getElementById("area9");
+            var arr = ["자바","오라클","html","css","javascript"];
+            
+            area9.innerHTML += "arr : " + arr + "<br>";
+
+            // slice(시작인덱스, 끝인덱스)
+            area9.innerHTML += "arr의 slice결과 : " + arr.slice(2,4) + "<br>";
+            area9.innerHTML += "다시 arr :" + arr + "<br>";
+            //원본배열에 영향을 끼치는 메소드가 아님!
+
+           // console.log(arr.slice(2,4));
+
+           // splice(시작인덱스, 제거수[,추가값])
+           area9.innerHTML += "arr의 splice 결과 : " + arr.splice(2,2,"") + "<br>";
+
+            }
+    </script>
+    <h4>9) toString() : 배열에 담긴값들을 하나의 "문자열"로 합쳐서 반환해주는 메소드</h4>
+
+    <div id="area10" class="small"></div>
+    <button onclick="toStringTest();">확인</button>
+
+    <script>
+        function toStringTest(){
+            var area10 = document.getElementById("area10");
+            var arr = ['나는','오늘부터','다여트','시작한다'];
+
+            area10.innerHTML += "arr의 : " + arr+ "<br>"; // 알게모르게 toString한 결과가 출력되었던 것
+            area10.innerHTML += "arr의 toString :" + arr.toString() + "<br>"
+            //join 은 문자열 합치기에 사용되는 구분자가 기본적으로 , 이긴 하지만 
+            // 새로운 구분자를 지정할수 있다는 점이 toString과 다르다 
+
+        }
+    </script>
 </body>
 </html>

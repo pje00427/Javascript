@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+    <style>
+        .area{
+            background:lightgray;
+            border:1px solid black;
+            height:250px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h3>* 객체 배열을 사용한 다량의 데이터 관리</h3>
+    <button onclick="test1();">실행확인</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        function test1(){
+            var student0 = {name:"강보람", java:100, oracle:90, html:90, css:50};
+            var student1 = {name:"홍길동", java:45, oracle:60, html:100, css:70};
+            var student2 = {name:"유관순", java:76, oracle:34, html:50, css:100};
+            var student3 = {name:"김말똥", java:75, oracle:60, html:70, css:100};
+
+            // 빈 배열 선언
+            var students = [];
+
+            students.push(student0);
+            students.push(student1);
+            students.push(student2);
+            students.push(student3);
+
+            /*
+            console.log(students);
+            console.log(students.length);
+
+            console.log(students[0].name);
+            console.log(students[0]["name"]);
+            */
+
+            //for(var i=0; i<students.length; i++){
+            for(var i in students){
+                //console.log(students[i].java);
+
+                students[i].framework = 100;
+
+                // 해당 객체별로 java+oracle+html+css+framework 총 합계구해서 반환
+                students[i].getSum = function(){
+                    return this.java + this.oracle + this.html + this.css + this.framework;
+                };
+
+                // 평균 구해서 반환 
+                students[i].getAvg = function(){
+                    return this.getSum() / 5;
+                };
+
+            }
+
+            console.log(students);
+
+            var area1 = document.getElementById("area1");
+
+            for(var i in students){
+                /*
+                area1.innerHTML += "이름 : " + students[i].name + 
+                                   ", 총점 : " + students[i].getSum() + 
+                                   ", 평균 : " + students[i].getAvg() + "<br>";
+                */
+                with(students[i]){
+                    area1.innerHTML += "이름 : " + name + 
+                                     ", 총점 : " + getSum() + 
+                                     ", 평균 : " + getAvg() + "<br>";
+                }
+            }
+
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 생성자 함수</h3>
+    <p>new 키워드를 사용해서 객체를 생성할 수 있는 함수를 의미</p>
+
+    <button onclick="test2();">실행확인</button>
+    <div id="area2" class="area"></div>
+
+    <script>
+        function test2(){
+            /*
+            var student0 = new Student("강보람", 80, 70, 40, 30, 100);
+            var student1 = new Student("홍길동", 90, 100, 40, 20, 10);
+
+            var students = [];
+            students.push(student0);
+            students.push(student1);
+
+            console.log(students);
+            */
+
+            var students = [new Student("강보람", 80, 70, 40, 30, 100), 
+                            new Student("홍길동", 90, 100, 40, 20, 10)];
+            
+            console.log(students);
+
+            //for(var i=0; i<students.length; i++){
+            for(var i in students){
+                document.getElementById("area2").innerHTML += students[i];
+            }
+
+            var myPhone = new Cellphone("갤럭시", 1500000);
+            console.log(myPhone);
+
+            // - instanceof 연산자
+            // 해당 객체가 어떤 생성자 함수로 생성 되었는지 검사
+            console.log(myPhone instanceof Cellphone);
+            console.log(myPhone instanceof Student);
+            
+
+        }
+
+        function Cellphone(pName, price){
+            this.pName = pName;
+            this.price = price;
+        }
+
+
+        function Student(name, java, oracle, html, css, framework){
+
+            // 속성 정의
+            this.name = name;
+            this.java = java;
+            this.oracle = oracle;
+            this.html = html;
+            this.css = css;
+            this.framework = framework;
+
+            // 메소드 정의
+            this.getSum = function(){
+                return this.java + this.oracle + this.html + this.css + this.framework;
+            }           
+
+            this.getAvg = function(){
+                return this.getSum() / 5;
+            }
+
+            this.toString = function(){
+                return "이름 : " + this.name + ", 총점 : " + this.getSum() + ", 평균 : " + this.getAvg() + "<br>";
+            }
+
+        }
+
+    </script>
+
+
+
+
+
+</body>
+</html>

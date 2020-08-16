@@ -195,7 +195,7 @@
                 }
             };
 
-            dog.eat("밥");
+            dog.eat("과자");
 
         }
     </script>
@@ -226,15 +226,15 @@
         function test5(){
 
             var name = document.getElementById("name").value;
-            var kor = Number(document.getElementById("kor").value); // "100" --> 100
-            var math = Number(document.getElementById("math").value);
-            var eng = Number(document.getElementById("eng").value);
+            var k = Number(document.getElementById("kor").value); // "100" --> 100
+            var m = Number(document.getElementById("math").value);
+            var e = Number(document.getElementById("eng").value);
 
             var student = {
                 name:name,
-                kor:kor,
-                math:math,
-                eng:eng,
+                kor:k,
+                math:m,
+                eng:e,
                 getSum:function(){
                     return this.kor + this.math + this.eng;
                 },
@@ -267,7 +267,7 @@
 
             with(student){
                 area5.innerHTML += "학생이름 : " + name + "<br>";
-                area5.innerHTML += "국어점수 : " + ["kor"] + "<br>"; // 배열이 그냥 출력됨
+                area5.innerHTML += "국어점수 : " + kor + "<br>"; // 배열이 그냥 출력됨
                 area5.innerHTML += "수학점수 : " + math + "<br>";
                 area5.innerHTML += "영어점수 : " + eng + "<br>";
                 area5.innerHTML += "총점 : " + (kor + math + eng) + "<br>";
@@ -277,7 +277,6 @@
                 area5.innerHTML += "평균 : " + getAvg();
                 // with를 이용하고자 할때는 속성명만 작성하는 방식                
             }
-
 
         }
     </script>

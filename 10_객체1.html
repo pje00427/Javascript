@@ -8,7 +8,7 @@
         .small{height:200px;}
         .big{height:400px;}
         .small, .big{
-            background:powderblue;
+            background:lightgray;
             border:1px solid black;
         }
     </style>
@@ -128,7 +128,7 @@
         function test3(){
             var arr = ["강보람", 10, true];
 
-            // for(var i=0; i<arr.length; i++){
+            //for(var i=0; i<arr.length; i++){
             for(var b in arr){ // 배열제시시 반복문 돌 때 마다 0에서부터 1씩 증가하는 인덱스값이 앞쪽 변수에 담김
                 console.log(arr[b]);
             }
@@ -195,7 +195,7 @@
                 }
             };
 
-            dog.eat("과자");
+            dog.eat("사과");
 
         }
     </script>
@@ -226,15 +226,15 @@
         function test5(){
 
             var name = document.getElementById("name").value;
-            var k = Number(document.getElementById("kor").value); // "100" --> 100
-            var m = Number(document.getElementById("math").value);
-            var e = Number(document.getElementById("eng").value);
+            var kor = Number(document.getElementById("kor").value); // "100" --> 100
+            var math = Number(document.getElementById("math").value);
+            var eng = Number(document.getElementById("eng").value);
 
             var student = {
                 name:name,
-                kor:k,
-                math:m,
-                eng:e,
+                kor:kor,
+                math:math,
+                eng:eng,
                 getSum:function(){
                     return this.kor + this.math + this.eng;
                 },
@@ -267,7 +267,7 @@
 
             with(student){
                 area5.innerHTML += "학생이름 : " + name + "<br>";
-                area5.innerHTML += "국어점수 : " + kor + "<br>"; // 배열이 그냥 출력됨
+                area5.innerHTML += "국어점수 : " + ["kor"] + "<br>"; // 배열이 그냥 출력됨
                 area5.innerHTML += "수학점수 : " + math + "<br>";
                 area5.innerHTML += "영어점수 : " + eng + "<br>";
                 area5.innerHTML += "총점 : " + (kor + math + eng) + "<br>";
@@ -277,6 +277,7 @@
                 area5.innerHTML += "평균 : " + getAvg();
                 // with를 이용하고자 할때는 속성명만 작성하는 방식                
             }
+
 
         }
     </script>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본선택자</title>
+    <script src="resources/js/jquery-3.5.1.min.js"></script>
+
+    
+</head>
+<body>
+    <h1>기본선택자</h1>
+
+    <h3>* 아이디 선택자</h3>
+    <p>특정한 고유한 아이디값을 가진 요소만을 선택하는 선택자</p>
+    <h1 id="id1">ID1</h1>
+    <h1 id="id2">ID2</h1>
+
+    <script>
+        $(document).ready(function(){
+
+            // 순수 자바스크립트 방식 --> document.getElementById("아이디명");
+            var id1 = document.getElementById("id1");
+            id1.style.color = "red";
+
+            // jQuery 방식 --> $("#아이디명")
+            $("#id2").css("color", "pink"); // 메소드를 통해서 수정해야됨
+
+            // 내가 요소를 자바스크립트방식으로 선택하냐
+            // jQuery방식으로 선택하냐에 따라서 속성에 접근하는방식, 메소드를 이용하는 방식 차이가 있음
+
+            $("#id1, #id2").css("backgroundColor", "yellow");
+
+        });
+    </script>
+
+    <hr>
+
+    <h3>* 태그 선택자</h3>
+
+    <p>JAVA</p>
+    <p>Oracle</p>
+    <p>HTML</p>
+    <h5>CSS</h5>
+    <h5>JavaScript</h5>
+
+    <script>
+        $(document).ready(function(){
+
+            // 순수 자바스크립트 방식 --> document.getElementsByTagName("태그명")
+            var p = document.getElementsByTagName("p"); // [p, p, p]
+            for(var i=0; i<p.length; i++){
+                p[i].style.color = "red";
+            }
+
+            // jQuery 방식 --> $("태그명")
+            $("h5").css("color", "blue");
+
+            $("p, h5").css("backgroundColor", "yellowgreen");
+
+        });
+    </script>
+
+    <hr>
+
+    <h3>* 클래스 선택자</h3>
+    <h1 class="item">Class1</h1>
+    <h1 class="item select">Class2</h1>
+    <h2 class="item" id="test">Class3</h2>
+
+    <script>
+        $(document).ready(function(){
+            // 순수 자바스크립트 방식 --> document.getElementsByClassName("클래스명")
+            var items = document.getElementsByClassName("item"); // []
+            for(var i=0; i<items.length; i++){
+                items[i].style.color = "orange";
+                //items[i].innerHTML = "ㅋㅋㅋ";
+                //console.log(items[i].innerHTML);
+            }
+
+            // jQuery 방식 --> $(".클래스명")
+            $(".item").css("backgroundColor", "yellow");
+
+            //$(".item").html("<b>ㅋㅋㅋ</b>"); // innerHTML과 관련된 메소드
+            //$(".item").text("<b>ㅋㅋㅋㅋ</b>"); // innerText와 관련된 메소드
+
+            console.log($("#id1").html());
+
+        });
+    </script>
+
+    <!-- 
+                    자바스크립트 방식           |            jQuery 방식
+           ----------------------------------------------------------------------
+             document.getElementById("test")   |           $("#test")
+           document.getElementsByTagName("p")  |             $("p")
+        document.getElementsByClassName("test")|           $(".test")
+
+    요소의내용변경 |     속성에 직접접근          |        메소드를 이용해서
+     -->
+
+    <br><br>
+
+    아이디 : <input type="text" id="userId"> <br>
+    아이디 저장 <input type="checkbox" id="saveId"> <br>
+    <button id="btn">실행확인</button>
+
+    <script>
+        $(document).ready(function(){
+
+            // 자바스크립트 방식으로 클릭이벤트연결 (고전이벤트모델)
+            /*
+            var btn = document.getElementById("btn");
+            btn.onclick = function(){
+
+            };*/
+
+            // jQuery 방식으로 클릭이벤트연결
+            $("#btn").click(function(){
+                //alert("클릭됨");
+                
+                // css() : 스타일과 관련된 메소드
+                // val() : input요소의 value와 관련된 메소드
+                // html()/text() : innerHTML, innerText 관련된 메소드
+
+                // prop() : 부수적인 속성들을 전반적으로 관리하는 메소드
+                console.log($("#userId").val());
+                console.log($("#saveId").prop("checked"));
+
+
+                $("#userId").val("ㅋㅋㅋㅋ");
+
+                console.log($("#test").css("color"));
+
+            });
+
+        });
+    </script>
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

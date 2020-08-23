@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장객체</title>
+    <style>
+        .small{height:150px}
+        .big{height:400px}
+        .small, .big{
+            background:lightgray;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>* Number 객체</h3>
+
+    <button onclick="test1();">실행확인</button>
+    <div id="area1" class="small"></div>
+    
+    <script>
+        function test1(){
+            var num1 = new Number(123.456789); // Integer
+            var num2 = 123;                    // int
+
+            //console.log(num1);    // Number {123.456789}
+            //console.log(num2);    // 123
+
+            //console.log(typeof(num1));
+            //console.log(typeof(num2));
+
+            //console.log(num1 instanceof Number);
+            //console.log(num2 instanceof Number);
+
+            var area1 = document.getElementById("area1");
+
+            area1.innerHTML += "num1 : " + num1 + ", 자료형 : " + typeof(num1) + "<br>";
+            area1.innerHTML += "num2 : " + num2 + ", 자료형 : " + typeof(num2) + "<br>";
+
+            // 반올림 처리 : Math.round(숫자)       --> 반올림처리한 숫자
+            
+            // 반올림 처리 : 숫자.toFixed(자리수)   --> 반올림처리한 문자열 ""
+            area1.innerHTML += "num1.toFixed(1) : " + num1.toFixed(1) + "<br>";
+            area1.innerHTML += "num2.toFixed(4) : " + num2.toFixed(4) + "<br>";
+            // 빈자리는 0채움
+
+            area1.innerHTML += "toFixed()한 결과의 자료형 : " + typeof(num1.toFixed(1));
+
+            console.log(num2.toFixed(4));
+        }
+    </script>
+
+    <hr>
+
+    <h3>* String 객체</h3>
+    <p>
+        String 객체의 메소드는 크게 기본메소드와 HTML요소 관련 메소드로 구분할 수 있다.
+    </p>
+
+    <button onclick="test2();">실행확인</button>
+    <div id="area2" class="big"></div>
+
+    <script>
+        function test2(){
+            var str = "javascript";         // 자료형:string
+            var str2 = new String("html");  // 자료형:object
+
+            //console.log(str);
+            //console.log(str2);
+
+            var area2 = document.getElementById("area2");
+
+            // HTML 요소 관련 메소드 (태그로 감싸는 메소드)
+            area2.innerHTML += "str : " + str + "<br>";
+
+            area2.innerHTML += "bold() : " + str.bold() + "<br>";
+            area2.innerHTML += "small() : " + str.small() + "<br>";
+            area2.innerHTML += "strike() : " + str.strike() + "<br>";
+            area2.innerHTML += "italics() : " + str.italics() + "<br>";
+            area2.innerHTML += "fontcolor('색상') : " + str.fontcolor("red") + "<br>";
+            area2.innerHTML += "fontsize(사이즈) : " + str.fontsize(20) + "<br>";
+            area2.innerHTML += "sub() : " + str.sub() + "<br>";
+            area2.innerHTML += "sup() : " + str.sup() + "<br>";
+            area2.innerHTML += "link(url) : " + str.link("http://www.naver.com");
+        }
+    </script>
+
+    <hr>
+
+    <h3>* Date 객체</h3>
+
+    <button onclick="test3();">실행확인</button>
+    <div id="area3" class="big"></div>
+
+    <script>
+        function test3(){
+
+            var area3 = document.getElementById("area3");
+
+            var date1 = new Date(); // 현재 날짜 및 시간(시스템)
+            
+            // 2018년 1월 15일로 셋팅
+            var date2 = new Date(2018, 1-1, 15);
+            // 시간까지
+            var date3 = new Date(2018, 0, 15, 17, 30, 23); // 년월일시분초
+
+            // 밀리세컨까지
+            var date4 = new Date(2018, 0, 15, 17, 30, 23, 5000); //년월일시분초밀리세컨초
+
+            // 1h 1m 1s 1ms
+
+            // 1d == 24h == 24*60m == 24*60*60s == 24*60*60*1000ms
+            // 1h == 60m == 60*60s == 60*60*1000ms
+            // 1m == 60s == 60*1000ms
+            // 1s == 1000ms
+
+            area3.innerHTML += "Date() : " + date1 + "<br>";
+            area3.innerHTML += "Date(년, 월, 일) : " + date2 + "<br>";
+            area3.innerHTML += "Date(년, 월, 일, 시, 분, 초) : " + date3 + "<br>";
+            area3.innerHTML += "Date(년, 월, 일, 시, 분, 초, 밀리세컨초) : " + date4 + "<br>";
+
+            // Date객체에서 제공하는 메소드
+            area3.innerHTML += "년도 : " + date1.getFullYear() + "<br>";
+            area3.innerHTML += "월 : " + (date1.getMonth() + 1) + "<br>";
+            area3.innerHTML += "일 : " + date1.getDate() + "<br>";
+            area3.innerHTML += "요일 : " + date1.getDay() + "<br>";
+            area3.innerHTML += "시 : " + date1.getHours() + "<br>";
+            area3.innerHTML += "분 : " + date1.getMinutes() + "<br>";
+            area3.innerHTML += "초 : " + date1.getSeconds() + "<br>";
+
+            // 종강(2020년 12월 9일) 까지 남은 일수 dday
+
+            var end = new Date(2020, 11, 9); // 종강날짜
+            var now = new Date(); // 현재날짜
+
+            console.log(end);
+            console.log(now);
+
+            // 종강날짜 - 현재날짜
+            console.log(end - now);
+            // 현재날짜부터 종강날짜까지 몇 밀리세컨초 남았는지 알려주는거임
+
+            //var dday = end - now;   // 밀리세컨초단위
+
+            // 초단위 (1000ms == 1s)
+            //var dday = (end-now) / 1000;
+
+            // 분단위 (60s == 1m)
+            //var dday = (end-now) / 1000 / 60;
+
+            // 시단위 (60m == 1h)
+            //var dday = (end-now) / 1000 / 60 / 60;
+
+            // 일단위 (24h == 1d)
+            var dday = (end-now) / 1000 / 60 / 60 / 24;
+            console.log(Math.floor(dday));
+
+            window.alert("종강까지 " + Math.floor(dday) + "일 남음");
+
+
+        }
+    </script>
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>

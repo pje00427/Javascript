@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추가적인메소드</title>
+    <script src="resources/js/jquery-3.5.1.min.js"></script>
+    <style>
+        .highlight_0{background:red;}
+        .highlight_1{background:orange;}
+        .highlight_2{background:yellow;}
+        .highlight_3{background:green;}
+        .highlight_4{background:blue;}
+    </style>
+</head>
+<body>
+    <h1>추가적인 메소드</h1>
+
+    <h3>* each 메소드</h3>
+    <p>
+        객체가 가지고 있는 모든 속성에 순차적으로 접근하거나, <br>
+        배열의 모든 인덱스에 순차적으로 접근할 때 <br>
+        사용하는 for in문과 유사하게 수행되는 메소드 <br>
+    </p>
+    <pre>
+        1) $.each(객체|배열, function(매개변수1,매개변수2){
+            순차적으로 접근해서 실행할 내용;
+            });
+
+            만약 객체를 제시했다면, 
+            첫번째 매개변수에는 해당 순차적으로 접근된 객체의 속성명(키)이 담김 
+            두번째 매개변수에는 해당 속성값(밸류)이 담김
+
+            만약 배열을 제시했다면,
+            첫번째 매개변수에는 해당 순차적으로 접근된 배열의 인덱스가 담김
+            두번째 매개변수에는 해당 인덱스의 값이 담김
+
+        2) 객체|배열.each(function(매개변수1,매개변수2){
+                순차적으로 접근해서 실행할 내용;
+          });
+    </pre>
+    <div id="area1"></div>
+    <script>
+        $(function(){
+            // 배열
+            var arr = [{name:"네이버",link:"http://www.naver.com"},
+                        {name:"구글", link:"http://www.google.com"},
+                        {name:"w3c", link:"http://www.w3c.com"},
+                        {name:"w3schools", link:"http://www.w3schools.com"}];
+             var output = "";           
+            $.each(arr, function(index, item){
+                output += "<h2><a href='" +item.link+"'>" +item.name+ "</a><h2>";
+            });
+            // console.log(output);
+            $("#area1").html(output);
+
+
+        });
+    </script>
+</body>
+</html>

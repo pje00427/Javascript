@@ -48,27 +48,30 @@
 
     <script>
         $(function(){
-            /*
+            
             $("#test2").on("click", function(){
                 $(this).css("backgroundColor", "orangered").text("클릭됨");
             });
-            */
+           
+           $("#test2").on("click", function(){
+               $(this).css("backgroundColor", "oranged").text("클릭됨");
+           })
 
             // 한 요소에 다중으로 이벤트걸기 가능함 (on메소드 사용시)
-            $("#test2").on({"mouseenter":function(){
-                // mouseenter이벤트 발생시 실행할 내용
-                $(this).css("backgroundColor", "yellowgreen").text("마우스 올라감");
+            // $("#test2").on({"mouseenter":function(){
+            //     // mouseenter이벤트 발생시 실행할 내용
+            //     $(this).css("backgroundColor", "yellowgreen").text("마우스 올라감");
 
-            }, "mouseout":function(){
-                // mouseout이벤트 발생시 실행할 내용
-                $(this).css("backgroundColor", "yellow").text("마우스 빠져나감");
+            // }, "mouseout":function(){
+            //     // mouseout이벤트 발생시 실행할 내용
+            //     $(this).css("backgroundColor", "yellow").text("마우스 빠져나감");
 
-            }, "click":function(){
-                // click이벤트 발생시 실행할 내용 => 기존에 걸려있던 mouseenter, mouseout 이벤트 핸들러 제거
-                // off메소드 : 이벤트 핸들러 제거
-                $(this).off("mouseenter").off("mouseout").css("backgroundColor","orangered").text("이벤트 제거됨");
+            // }, "click":function(){
+            //     // click이벤트 발생시 실행할 내용 => 기존에 걸려있던 mouseenter, mouseout 이벤트 핸들러 제거
+            //     // off메소드 : 이벤트 핸들러 제거
+            //     $(this).off("mouseenter").off("mouseout").css("backgroundColor","orangered").text("이벤트 제거됨");
 
-            }});
+            // }});
         });
     </script>
 
@@ -213,11 +216,17 @@
     <h3>* 동적으로 아이디 유효성검사</h3>
 
     아이디 : <input type="text" id="userId"> 
-    <label style="font-size:10px; color:gray">영소문자, 숫자 포함 4~12자 사이로 입력하시오 (단, 첫글자는 영문자)</label>
+    <label style="font-size:10px; color:gray">  <br>영소문자, 숫자 포함 4~12자 사이로 입력하시오 (단, 첫글자는 영문자)</label>
     <br>
     <label id="result" style="font-size:12px"></label>
+    <br>
 
-    <br><br>
+    비밀번호 : <input type="password" id="userPwd">
+    <label style="font-size:10px; color:gray">  <br>영소문자, 숫자 포함 4~12자 사이로 입력하시오 (단, 첫글자는 영문자)</label>
+    <br>
+    <label id="result2" style="font-size:12px"></label>
+    <br>
+
     <button id="enrollBtn" disabled>회원가입</button>
 
     <script>
@@ -243,6 +252,27 @@
                 }
 
             });
+
+            $("#userPwd").keyup(function(){
+
+                if($(this).val().length > 0){
+
+                    if(regExp.test($(this).val())){ // 특정패턴에 만족할경우
+                        $("#result2").css("color","green").html("사용가능한 비밀번호 형식입니다.");
+                        $("#enrollBtn").attr("disabled",false);
+
+                    }else{ // 그게 아닐 경우
+                        $("#result2").css("color","red").html("사용할 수 없는 비밀번호 형식입니다.");
+                        $("#enrollBtn").attr("disabled", true);
+                    }
+
+                }else{
+                    $("#result").html("");
+                }
+
+            });
+
+            
 
         });
     </script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="resources/js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <h3>* fadeIn()과 fadeOut() </h3>
+
+    <button id="fadeIn">fadeIn</button>
+    <button id="fadeOut">fadeOut</button>
+    <button id="fadeToggle">fadeToggle</button>
+
+    <br><br>
+
+    <img src="resources/images/flower5.PNG" alt="" id="flower" style="">
+
+    <script>
+        $(function(){
+            $("#fadeIn").click(function(){
+                $("#flower").fadeIn(3000);
+            }); 
+
+            $("#fadeOut").click(function(){
+                $("#flower").fadeOut(3000);
+            });
+
+            $("#fadeToggle").click(function(){
+                $("#flower").fadeToggle(1000);
+            });
+
+            $("#flower").hover(function(){
+                $(this).fadeTo(1000, 0.5);
+            }, function(){
+                $(this).fadeTo(1000, 1);
+            });
+        });
+    </script>
+
+
+</body>
+</html>

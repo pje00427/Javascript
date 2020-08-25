@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background:beige;
+            width:300px;
+            height:30px;
+            border-radius:10px;
+            text-align:center;
+            line-height:30px;
+            border:1px solid yellow;
+            cursor:pointer;
+        }
+        p{
+            width:300px;
+            border:1px solid lightgray;
+            height:100px;
+            border-radius:10px;
+            margin-top:5px;
+            display:none;
+        }
+    </style>
+    <script src="resources/js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <h3>* slideDown()과 slideUp() </h3>
+
+    <div>Q. 반품 언제 되나요?</div>
+    <p>A. 지금 확인 중입니다.</p>
+
+    <div>Q. 상품 위치를 알고싶습니다.</div>
+    <p>A. 배송조회 해보세요. 거기 다 나옵니다.</p>
+
+    <div>Q. 이 사이즈 있나요?</div>
+    <p>A. 있어요 ^_^</p>
+
+    <div>Q. 전화 통화 가능 시간 알려주세요.</div>
+    <p>A. 플러스친구 카톡을 활용하면 24시간 내에 답변드리겠습니다.</p>
+
+    <div>Q. 판매자가 연락이 안됩니다.</div>
+    <p>A. 신고하세요.</p>
+
+    <script>
+        $(function(){
+            $("div").click(function(){
+
+                var $p = $(this).next();
+
+                if($p.css("display") == "none"){
+
+                    $(this).siblings("p").slideUp();
+                    $p.slideDown(); 
+
+                }else{
+                    $p.slideUp();
+
+                }
+
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>

@@ -18,6 +18,7 @@
 
     <script>
         $(document).ready(function(){
+
             // 순수 자바스크립트 방식 --> document.getElementById("아이디명");
             var id1 = document.getElementById("id1");
             id1.style.color = "red";
@@ -73,14 +74,14 @@
             var items = document.getElementsByClassName("item"); // []
             for(var i=0; i<items.length; i++){
                 items[i].style.color = "orange";
-                // items[i].innerHTML = "ㅋㅋㅋ";
+                //items[i].innerHTML = "ㅋㅋㅋ";
                 //console.log(items[i].innerHTML);
             }
 
             // jQuery 방식 --> $(".클래스명")
             $(".item").css("backgroundColor", "yellow");
 
-            // $(".item").html("<b>ㅋㅋㅋ</b>"); // innerHTML과 관련된 메소드
+            //$(".item").html("<b>ㅋㅋㅋ</b>"); // innerHTML과 관련된 메소드
             //$(".item").text("<b>ㅋㅋㅋㅋ</b>"); // innerText와 관련된 메소드
 
             console.log($("#id1").html());

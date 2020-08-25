@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="resources/js/jquery-3.5.1.min.js"></script>
+    <style>
+        .test{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트 핸들러 연결 방법 종류</h1>
+
+    <h3>* 방법1. 이벤트메소드를 통한 연결</h3>
+    <pre>
+    $("선택자").이벤트메소드(function(){
+        해당 요소에 해당 이벤트 발생시 실행할 내용;
+    });
+    </pre>
+
+    <h4 id="test1">클릭해보세요</h4>
+
+    <script>
+        $(function(){
+            $("#test1").click(function(){
+                $(this).html("클릭되었습니다.");
+            });
+
+            $("#test1").dblclick(function(){
+                $(this).addClass("test");
+            });
+        });
+    </script>
+
+    <br><br>
+
+    <h3>* 방법2. on 메소드를 이용한 방법</h3>
+    <pre>
+    $("선택자").on("이벤트명", function(){
+        해당 요소에 해당 이벤트 발생시 실행할 내용;
+    });
+    </pre>
+
+    <h4 id="test2">마우스를 클릭 및 올려보세요</h4>
+
+    <script>
+        $(function(){
+            /*
+            $("#test2").on("click", function(){
+                $(this).css("backgroundColor", "orangered").text("클릭됨");
+            });
+            */
+
+            // 한 요소에 다중으로 이벤트걸기 가능함 (on메소드 사용시)
+            $("#test2").on({"mouseenter":function(){
+                // mouseenter이벤트 발생시 실행할 내용
+                $(this).css("backgroundColor", "yellowgreen").text("마우스 올라감");
+
+            }, "mouseout":function(){
+                // mouseout이벤트 발생시 실행할 내용
+                $(this).css("backgroundColor", "yellow").text("마우스 빠져나감");
+
+            }, "click":function(){
+                // click이벤트 발생시 실행할 내용 => 기존에 걸려있던 mouseenter, mouseout 이벤트 핸들러 제거
+                // off메소드 : 이벤트 핸들러 제거
+                $(this).off("mouseenter").off("mouseout").css("backgroundColor","orangered").text("이벤트 제거됨");
+
+            }});
+        });
+    </script>
+
+    <br><br>
+
+    <h3>* 방법3</h3>
+    <pre>
+    $("상위요소선택자").on("이벤트명", "하위요소선택자", function(){
+        선택된상위요소 안에 존재하는 해당 하위요소에 이벤트가 발생됐을 경우 실행할 내용;
+    });
+    </pre>
+
+    <div id="wrap">
+        <h4>h4 클릭해보시오</h4>
+        <h5>h5 클릭해보시오</h5>
+    </div>
+
+    <script>
+        $(function(){
+            /*
+            $("#wrap").on("click", "h4", function(){
+                alert("클릭되었습니다.");
+            });
+            */
+            $(document).on("click", "h4", function(){ // document가 DOM요소들의 제일 부모요소를 가리킴
+                alert("클릭되었습니다.");
+            });
+
+            $("#wrap").on("click", "h5, h4", function(){
+                console.log("클릭!");
+            });
+
+
+        });
+    </script>
+
+    <hr>
+
+    <h3>* 단, 동적으로 만들어진 요소에도 동일한 이벤트를 적용시키고자 한다면 반드시 방법3으로 해야됨!</h3>
+    <!-- 동적으로 만들어진 요소 : 첨에 문서 로딩시에는 없다가 나중에 만들어진 요소 -->
+
+    <div id="wrap2">
+        <h6>기존에 보여지는 요소</h6>
+    </div>
+
+    <script>
+        $(function(){
+            // 방법1 --> 이벤트메소드 --> 동적으로 만들어진 요소에 이벤트적용 안됨
+            /*
+            $("#wrap2>h6").click(function(){
+                $("#wrap2").append("<h6>클릭으로 인해 동적으로 만들어진 요소</h6>");
+            });
+            */
+
+            // 방법2 --> 동적으로 만들어진 요소에 이벤트적용 안됨
+            /*
+            $("#wrap2>h6").on("click", function(){
+                $("#wrap2").append("<h6>클릭으로 인해 동적으로 만들어진 요소</h6>");
+            });
+            */
+
+            // 방법3 --> 동적으로 만들어진 요소에 이벤트적용됨!!!!
+            $("#wrap2").on("click", "h6", function(){
+                $("#wrap2").append("<h6>클릭으로 인해 동적으로 만들어진 요소</h6>");
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h3>* 일회성 이벤트</h3>
+    <p>이벤트를 한번만 연결할 때 사용</p>
+
+    <h5 id="test3">단 한번만실행될꺼임</h5>
+
+    <script>
+        $(function(){
+            $("#test3").one("click", function(){
+                alert("처음이자 마지막 이벤트 발생");
+            });
+        });
+    </script>
+
+    <!--
+        on : 이벤트 핸들러 연결 메소드
+        off : 이벤트 핸들러 제거 메소드
+        one : 일회성으로 이벤트 핸들러 연결 메소드
+    -->
+    <hr>
+
+    <h3>* 키보드 관련 이벤트</h3>
+    <p>
+        - keydown/keypress : 키보드가 눌려질때 <br>
+         > keydown : 키보드가 눌려질때 <br>
+         > keypress : 키보드가 눌려질때 (펑션키, 기능키, 한글 안됨) <br>
+
+        - keyup : 키보드가 떼어질때 
+    </p>
+
+    <input type="text" id="test4">
+
+    <script>
+        $(function(){
+            $("#test4").keyup(function(){
+                //console.log("눌려졌음");
+                console.log($(this).val());
+            });
+        });
+    </script>
+
+    <br><br>
+
+    <h3>* 동적으로 글자 수 세기</h3>
+
+    <div>
+        150자 내로 작성하시오 <br>
+
+        <textarea id="content" cols="30" rows="10"></textarea> <br>
+        <p><span id="count">0</span>/150</p>
+    </div>
+
+    <script>
+        $(function(){
+            $("#content").keyup(function(){
+                // 현재 요소(textarea)안에 작성된 값의 길이를 알아내기
+                var inputLength = $(this).val().length;
+
+                $("#count").html(inputLength);
+
+                if(150-inputLength < 0){ 
+                    $("#count").css("color","red");
+                }else{
+                    $("#count").css("color","black");
+                }
+
+            });
+        });
+    </script>
+
+    <br><br>
+
+    <h3>* 동적으로 아이디 유효성검사</h3>
+
+    아이디 : <input type="text" id="userId"> 
+    <label style="font-size:10px; color:gray">영소문자, 숫자 포함 4~12자 사이로 입력하시오 (단, 첫글자는 영문자)</label>
+    <br>
+    <label id="result" style="font-size:12px"></label>
+
+    <br><br>
+    <button id="enrollBtn" disabled>회원가입</button>
+
+    <script>
+        $(function(){
+
+            var regExp = /^[a-z][a-z\d]{3,11}$/;
+
+            $("#userId").keyup(function(){
+
+                if($(this).val().length > 0){
+
+                    if(regExp.test($(this).val())){ // 특정패턴에 만족할경우
+                        $("#result").css("color","green").html("사용가능한 아이디 형식입니다.");
+                        $("#enrollBtn").attr("disabled",false);
+
+                    }else{ // 그게 아닐 경우
+                        $("#result").css("color","red").html("사용할 수 없는 아이디 형식입니다.");
+                        $("#enrollBtn").attr("disabled", true);
+                    }
+
+                }else{
+                    $("#result").html("");
+                }
+
+            });
+
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
